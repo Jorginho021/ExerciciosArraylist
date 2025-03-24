@@ -36,11 +36,11 @@ public class RemoverElementoArrayList {
         ArrayList<String> listaDeNomes = new ArrayList<>();
         
         // Adicionando os nomes ao ArrayList
+        listaDeNomes.add("Patrícia");
+        listaDeNomes.add("Marcio");
+        listaDeNomes.add("Athur");
+        listaDeNomes.add("Jorge");
         listaDeNomes.add("Ana");
-        listaDeNomes.add("Carlos");
-        listaDeNomes.add("Bruna");
-        listaDeNomes.add("Daniel");
-        listaDeNomes.add("Eduardo");
         
         // Criando o scanner para ler entradas do usuário
         Scanner scanner = new Scanner(System.in);
