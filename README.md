@@ -382,35 +382,183 @@ public class ExemploArrayListDecimal {
 }
 
 12:import java.util.ArrayList;
+import java.util.Collections;
 
-public class ExemploArrayListUniao {
+public class MaiorMenorValor {
     public static void main(String[] args) {
-        // Criando o primeiro ArrayList com números inteiros
-        ArrayList<Integer> lista1 = new ArrayList<>();
-        lista1.add(1);
-        lista1.add(2);
-        lista1.add(3);
-        lista1.add(4);
-        lista1.add(5);
-
-        // Criando o segundo ArrayList com números inteiros
-        ArrayList<Integer> lista2 = new ArrayList<>();
-        lista2.add(6);
-        lista2.add(7);
-        lista2.add(8);
-        lista2.add(9);
-        lista2.add(10);
-
-        // Criando o terceiro ArrayList e adicionando todos os elementos dos dois primeiros
-        ArrayList<Integer> listaUnificada = new ArrayList<>(lista1);
-        listaUnificada.addAll(lista2);  // Adiciona todos os elementos de lista2 a listaUnificada
-
+        // Criando o ArrayList com alguns números inteiros
+        ArrayList<Integer> listaNumeros = new ArrayList<>();
+        listaNumeros.add(15);
+        listaNumeros.add(42);
+        listaNumeros.add(7);
+        listaNumeros.add(100);
+        listaNumeros.add(23);
+        
+        // Encontrando o maior e o menor valor usando Collections
+        int maiorValor = Collections.max(listaNumeros);
+        int menorValor = Collections.min(listaNumeros);
+        
         // Exibindo o resultado
-        System.out.println("ArrayList unificado:");
-        for (Integer numero : listaUnificada) {
-            System.out.println(numero);
+        System.out.println("Maior valor: " + maiorValor);
+        System.out.println("Menor valor: " + menorValor);
+    }
+}
+13:import java.util.ArrayList;
+
+public class MesclarArrayLists {
+    public static void main(String[] args) {
+        // Criando o primeiro ArrayList com 5 elementos
+        ArrayList<Integer> lista1 = new ArrayList<>();
+        lista1.add(10);
+        lista1.add(20);
+        lista1.add(30);
+        lista1.add(40);
+        lista1.add(50);
+
+        // Criando o segundo ArrayList com 5 elementos
+        ArrayList<Integer> lista2 = new ArrayList<>();
+        lista2.add(60);
+        lista2.add(70);
+        lista2.add(80);
+        lista2.add(90);
+        lista2.add(100);
+
+        // Criando o terceiro ArrayList que vai armazenar a mescla das duas listas
+        ArrayList<Integer> listaMesclada = new ArrayList<>();
+        
+        // Adicionando todos os elementos de lista1 e lista2 na listaMesclada
+        listaMesclada.addAll(lista1);
+        listaMesclada.addAll(lista2);
+        
+        // Exibindo o resultado
+        System.out.println("Lista mesclada: " + listaMesclada);
+    }
+}
+
+14:import java.util.ArrayList;
+import java.util.Scanner;
+
+public class GerenciadorDeTarefas {
+
+    public static void main(String[] args) {
+        // Criando o ArrayList para armazenar as tarefas
+        ArrayList<String> tarefas = new ArrayList<>();
+        
+        // Scanner para ler a entrada do usuário
+        Scanner scanner = new Scanner(System.in);
+        
+        // Loop do menu interativo
+        while (true) {
+            System.out.println("\n----- Menu -----");
+            System.out.println("1. Adicionar tarefa");
+            System.out.println("2. Remover tarefa");
+            System.out.println("3. Listar tarefas");
+            System.out.println("4. Sair");
+            System.out.print("Escolha uma opção: ");
+            
+            int opcao = scanner.nextInt();
+            scanner.nextLine();  // Consumir a quebra de linha após a escolha da opção
+            
+            switch (opcao) {
+                case 1:
+                    // Adicionar tarefa
+                    System.out.print("Digite a tarefa que deseja adicionar: ");
+                    String tarefa = scanner.nextLine();
+                    tarefas.add(tarefa);
+                    System.out.println("Tarefa adicionada com sucesso!");
+                    break;
+                
+                case 2:
+                    // Remover tarefa
+                    System.out.print("Digite o índice da tarefa que deseja remover (início em 0): ");
+                    int indice = scanner.nextInt();
+                    if (indice >= 0 && indice < tarefas.size()) {
+                        tarefas.remove(indice);
+                        System.out.println("Tarefa removida com sucesso!");
+                    } else {
+                        System.out.println("Índice inválido.");
+                    }
+                    break;
+                
+                case 3:
+                    // Listar tarefas
+                    if (tarefas.isEmpty()) {
+                        System.out.println("Não há tarefas na lista.");
+                    } else {
+                        System.out.println("\nLista de tarefas:");
+                        for (int i = 0; i < tarefas.size(); i++) {
+                            System.out.println(i + ". " + tarefas.get(i));
+                        }
+                    }
+                    break;
+                
+                case 4:
+                    // Sair do programa
+                    System.out.println("Saindo do programa...");
+                    scanner.close();
+                    return;
+                
+                default:
+                    System.out.println("Opção inválida! Por favor, escolha uma opção válida.");
+            }
         }
     }
 }
 
-14:
+15:import java.util.ArrayList;
+
+class Aluno {
+    private String nome;
+    private double nota;
+
+    // Construtor
+    public Aluno(String nome, double nota) {
+        this.nome = nome;
+        this.nota = nota;
+    }
+
+    // Getters
+    public String getNome() {
+        return nome;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+
+    // Método para exibir informações do aluno
+    public String toString() {
+        return nome + " - Nota: " + nota;
+    }
+}
+
+public class GerenciadorDeAlunos {
+    public static void main(String[] args) {
+        // Criando o ArrayList para armazenar os alunos
+        ArrayList<Aluno> alunos = new ArrayList<>();
+
+        // Adicionando alguns alunos com suas notas
+        alunos.add(new Aluno("João", 7.5));
+        alunos.add(new Aluno("Maria", 9.0));
+        alunos.add(new Aluno("Carlos", 6.5));
+        alunos.add(new Aluno("Ana", 8.0));
+        
+        // Exibindo a lista de alunos e suas notas
+        System.out.println("Lista de alunos e suas notas:");
+        for (Aluno aluno : alunos) {
+            System.out.println(aluno);
+        }
+
+        // Calculando a média das notas
+        double somaNotas = 0;
+        for (Aluno aluno : alunos) {
+            somaNotas += aluno.getNota();
+        }
+        
+        double media = somaNotas / alunos.size();
+        
+        // Exibindo a média das notas
+        System.out.println("\nMédia das notas: " + media);
+    }
+}
+
